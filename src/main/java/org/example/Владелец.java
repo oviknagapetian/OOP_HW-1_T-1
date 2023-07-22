@@ -1,20 +1,17 @@
 package org.example;
 
-public class Владелец {
-    private String имя;
+public class Владелец implements Named {
+    private String name;
 
-    // Конструктор класса Владелец
-    public Владелец(String имя) {
-        this.имя = имя;
+    // Реализация методов интерфейса Именованный
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
-    // Геттер и сеттер для поля класса Владелец
-
-    public String getИмя() {
-        return имя;
-    }
-
-    public void setИмя(String имя) {
-        this.имя = имя;
+    @Override
+    public String getName() {
+        return name;
     }
 }

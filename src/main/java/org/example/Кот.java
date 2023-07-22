@@ -1,48 +1,81 @@
 package org.example;
 
-public class Кот {
-    private String имя;
-    private int возраст;
-    private Владелец владелец;
+// Интерфейс Именованный
+interface Named {
+    void setName(String name);
+    String getName();
+}
 
-    // Конструктор класса Кот
-    public Кот(String имя, int возраст) {
-        this.имя = имя;
-        this.возраст = возраст;
+// Интерфейс Возрастной
+interface Ageable {
+    void setAge(int age);
+    int getAge();
+}
+
+// Интерфейс Владелец
+interface Ownerable {
+    void setOwner(Владелец owner);
+    Владелец getOwner();
+}
+
+// Интерфейс Приветствие
+interface Greetable {
+    void greet();
+}
+
+// Интерфейс Информационный
+interface Informative {
+    String getInformation();
+}
+
+public class Кот implements Named, Ageable, Ownerable, Greetable, Informative {
+    private String name;
+    private int age;
+    private Владелец owner;
+
+    // Реализация методов интерфейсов
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
-    // Геттеры и сеттеры для полей класса Кот
-
-    public String getИмя() {
-        return имя;
+    @Override
+    public String getName() {
+        return name;
     }
 
-    public void setИмя(String имя) {
-        this.имя = имя;
+    @Override
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public int getВозраст() {
-        return возраст;
+    @Override
+    public int getAge() {
+        return age;
     }
 
-    public void setВозраст(int возраст) {
-        this.возраст = возраст;
+    @Override
+    public void setOwner(Владелец owner) {
+        this.owner = owner;
     }
 
-    public Владелец getВладелец() {
-        return владелец;
+    @Override
+    public Владелец getOwner() {
+        return owner;
     }
 
-    public void setВладелец(Владелец владелец) {
-        this.владелец = владелец;
-    }
-
-    // Метод "приветствие" для вывода приветствия на консоль
-    public void приветствие() {
-        String сообщение = "Мяу! Меня зовут " + имя + ". Мне " + возраст + " года(лет).";
-        if (владелец != null) {
-            сообщение += " Мой владелец - " + владелец.getИмя() + ".";
+    @Override
+    public void greet() {
+        String message = "Мяу! Меня зовут " + name + ". Мне " + age + " года(лет).";
+        if (owner != null) {
+            message += " Мой владелец - " + owner.getName() + ".";
         }
-        System.out.println(сообщение);
+        System.out.println(message);
+    }
+
+    @Override
+    public String getInformation() {
+        return "Кот по имени " + name + " возрастом " + age + " года(лет).";
     }
 }
