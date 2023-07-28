@@ -28,6 +28,10 @@ interface Informative {
     String getInformation();
 }
 
+@FunctionalInterface
+interface GreetFunction {
+    void greet(String name, int age);
+}
 public class Кот implements Named, Ageable, Ownerable, Greetable, Informative {
     private String name;
     private int age;
@@ -77,5 +81,10 @@ public class Кот implements Named, Ageable, Ownerable, Greetable, Informative
     @Override
     public String getInformation() {
         return "Кот по имени " + name + " возрастом " + age + " года(лет).";
+    }
+
+    // Новый метод, который использует функциональный интерфейс для приветствия
+    public void greetWithFunction(GreetFunction greetFunction) {
+        greetFunction.greet(name, age);
     }
 }

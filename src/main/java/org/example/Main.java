@@ -9,7 +9,13 @@ public class Main {
         владелец.setName("Иван");
         кот.setOwner(владелец);
 
-        кот.greet();
-        System.out.println(кот.getInformation());
+        // Использование анонимной функции для приветствия
+        кот.greetWithFunction(new GreetFunction() {
+            @Override
+            public void greet(String name, int age) {
+                String message = "Привет! Меня зовут " + name + ". Мне " + age + " года(лет).";
+                System.out.println(message);
+            }
+        });
     }
 }
