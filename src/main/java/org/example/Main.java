@@ -17,5 +17,9 @@ public class Main {
                 System.out.println(message);
             }
         });
+        // Использование интерфейса Informative
+        String additionalInfo = "Я играю с мячиком.";
+        String info = кот.getInformation(additionalInfo);
+        System.out.println(info);
     }
 }
